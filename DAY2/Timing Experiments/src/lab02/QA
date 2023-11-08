@@ -1,0 +1,31 @@
+1.On your computer, how many times per second does the millisecond timer update?
+The millisecond timer updates slightly more than 1000 times per second, but not precisely in one-millisecond increments.
+
+2.Is it possible to determine how many times per second the nanosecond timer updates? If so, how many? If not, why not?
+According to my experiment, the timer updated roughly 23,881,881 times in a second. However, this number reflects the number of times my loop was able to detect a change, not the actual update frequency of the hardware timer, which is typically much higher.
+
+3.Judging by experiment 4, how long does it appear to take to compute System.nanoTime()?
+From the data, the smallest difference is 41 nanoseconds. This suggests that the timer is capable of advancing in increments of at least 41 nanoseconds. However, this does not directly tell us how long it takes to compute System.nanoTime() itself, as the recorded time includes both the execution time of System.nanoTime() and any other code running in the loop between checks.
+
+
+4.Estimate the precision of your answer above (+/- how many nanoseconds?)
+the precision of the timing measurement can be estimated to be ±0.082 nanoseconds.
+
+5.How long does it take to compute the square root of the numbers 1 through 10?
+The operation takes 61.2 ± 7.36 nanoseconds based on my data.​
+
+6.Estimate the precision of your answer above (+/- how many nanoseconds?)
+The precision of the timing measurement is within ±7.36 nanoseconds.
+
+7.If you repeat the square root test 100x as many times, does the precision improve?
+Generally, increasing the number of repetitions in such experiments tends to improve the precision of the timing measurement. This is because all the little differences or extra bits that happen by chance get smoothed out when you look at the average of all the times you did it.
+
+8.How could you improve the results (get a more accurate estimate of elapsed time)?
+Do the test many times to make sure that little random changes don't mess up the results.
+When testing, close other programs so they don't interfere.
+Run my program a little before I start timing so that it's running smoothly and quickly.
+Make sure I'm only measuring the part I'm interested in, without extra stuff.
+Remember that checking the time and running the test loop takes some time too, and try to remove that from the final time measurement.
+
+
+

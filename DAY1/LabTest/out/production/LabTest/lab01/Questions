@@ -1,0 +1,26 @@
+1. Where is the assertEquals method defined? What does it do? Can we use assertEquals for more than just int types? (Hint: Consult the API for JUnit)
+* The assertEquals method is defined in the JUnit framework, specifically in the Assert class.
+* It is used to assert that two values are equal as a condition for passing a test.
+* Yes, assertEquals can be used for more than just int types; it is overloaded to handle different types such as float, double, long, Object, and even arrays of these types, comparing values and determining if they are equal within a specified tolerance for the floating-point numbers.
+
+2. Briefly describe what each of the three tests is checking.
+* The first test is checking for the findSmallestDiff method with an empty array. It will return -1 in this case.
+* The second test is checking for the findSmallestDiff method with the simple array which just has the same duplicated elements.
+* The third test is checking for the findSmallestDiff method with normal/complex array which contains 0, positive and negative ints.
+
+3. Why is our unimplemented findSmallestDiff method passing one of the tests?
+* Because in the unimplemented method, its default return is 0. This result is same as that of the arr2 case.
+
+4. Why are we failing the third test? How should our method be modified to correct this?
+* The failure is due to the fact that the findSmallestDiff method didn't use the absolute value for calculating the difference.
+* Use Math.abs() method to solve this problem.
+
+5. What is the appropriate call to assertEquals for your new test (test 4)?
+* Test 4 I wrote is to check for for the findSmallestDiff method with just positive integers.
+
+6. Provide one more test (test 5) for the findSmallestDiff method. Briefly describe your test and write the call to assertEquals here.
+* int[] arr5 = new arr[]{-3, -5, -33, -9, -11}
+* This is to check for the findSmallestDiff method with just negative integers.
+* assertEquals(2, DiffUtil.findSmallestDiff(arr5));
+
+7. Briefly describe your unit tests for Assignment 1.
