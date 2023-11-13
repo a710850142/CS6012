@@ -19,6 +19,8 @@ The precision of the timing measurement is within ±7.36 nanoseconds.
 
 7.If you repeat the square root test 100x as many times, does the precision improve?
 Generally, increasing the number of repetitions in such experiments tends to improve the precision of the timing measurement. This is because all the little differences or extra bits that happen by chance get smoothed out when you look at the average of all the times you did it.
+153, 154, 146, 135, 154
+148.4 +/- 19
 
 8.How could you improve the results (get a more accurate estimate of elapsed time)?
 Do the test many times to make sure that little random changes don't mess up the results.
