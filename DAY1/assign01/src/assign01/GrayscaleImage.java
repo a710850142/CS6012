@@ -12,7 +12,7 @@ import java.net.URL;
 /**
  * Represents a grayscale (black and white) image as a 2D array of "pixel" brightnesses
  * 255 is "white" 127 is "gray" 0 is "black" with intermediate values in between
- * Author: Ben Jones and Xiaohan Chen
+ * Author: Ben Jones
  */
 public class GrayscaleImage {
     private double[][] imageData; // the actual image data
