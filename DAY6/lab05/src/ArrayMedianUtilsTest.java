@@ -1,33 +1,42 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 
-public class ArrayMedianUtilsTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    // Tests for medianComparable method
+//Student: Ray Ding, Partner: Xiyao Xu
+
+
+class ArrayMedianUtilsTest {
+
     @Test
     public void testMedianComparable_NormalCase_OddLength() {
         Integer[] array = {3, 1, 2};
-        assertEquals(Integer.valueOf(2), ArrayMedianUtils.medianComparable(array));
+        assertEquals(2, ArrayMedianUtils.medianComparable(array));
     }
 
     @Test
     public void testMedianComparable_NormalCase_EvenLength() {
         Integer[] array = {4, 1, 3, 2};
-        assertEquals(Integer.valueOf(3), ArrayMedianUtils.medianComparable(array));
+        assertEquals(3, ArrayMedianUtils.medianComparable(array));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMedianComparable_EmptyArray() {
         Integer[] array = {};
-        ArrayMedianUtils.medianComparable(array);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ArrayMedianUtils.medianComparable(array);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMedianComparable_NullArray() {
-        ArrayMedianUtils.medianComparable(null);
+        assertThrows(IllegalArgumentException.class, () -> {
+            ArrayMedianUtils.medianComparable(null);
+        });
     }
-
     // Tests for medianComparator method
     @Test
     public void testMedianComparator_NormalCase_OddLength() {
@@ -43,23 +52,56 @@ public class ArrayMedianUtilsTest {
         assertEquals("apple", ArrayMedianUtils.medianComparator(array, lengthComparator)); // Expecting "apple" now
     }
 
+    @Test
+    public void testMedianComparator_NormalCase_NaturalOrder() {
+        String[] array = {"apple", "banana", "cat", "dog"};
+//        Comparator<String> lengthComparator = Comparator.comparingInt(String::length);
+        assertEquals("cat", ArrayMedianUtils.medianComparator(array, Comparator.naturalOrder())); // Expecting "cat" now
+    }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMedianComparator_EmptyArray() {
         String[] array = {};
         Comparator<String> lengthComparator = Comparator.comparingInt(String::length);
-        ArrayMedianUtils.medianComparator(array, lengthComparator);
+        assertThrows(IllegalArgumentException.class, () -> {
+            ArrayMedianUtils.medianComparator(array, lengthComparator);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMedianComparator_NullArray() {
         Comparator<String> lengthComparator = Comparator.comparingInt(String::length);
-        ArrayMedianUtils.medianComparator(null, lengthComparator);
+        assertThrows(IllegalArgumentException.class, () ->{
+            ArrayMedianUtils.medianComparator(null, lengthComparator);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testMedianComparator_NullComparator() {
         String[] array = {"apple", "banana", "cat"};
-        ArrayMedianUtils.medianComparator(array, null);
+        assertThrows(IllegalArgumentException.class, () ->{
+            ArrayMedianUtils.medianComparator(array, null);
+        });
     }
+
+//    @Test
+//    public void testMedianWithComparator2() {//test string array with self defined order in StringComparator
+//        String[] array = {"bird", "cat", "dog", "ant"};
+//        class StringComparator implements Comparator<String>{
+//            @Override
+//            public int compare(String str1, String str2) {
+//                int lengthComparison = Integer.compare(str1.length(), str2.length());
+//                if(lengthComparison != 0){
+//                    return lengthComparison;
+//                }
+//                else{
+//                    return str1.compareTo(str2);
+//                }
+//            }
+//        }
+//        assertEquals("dog", ArrayMedianUtils.medianComparator(array,new StringComparator()));
+//    }
+
+
+
 }
