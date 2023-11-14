@@ -5,7 +5,7 @@ import java.util.Comparator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//Student: Ray Ding, Partner: Xiyao Xu
+//Student: Xiyao Xu, Partner: Ray Ding
 
 
 class ArrayMedianUtilsTest {
