@@ -1,0 +1,41 @@
+What activities did you do as the driver? What activities did you do as the navigator?
+I did all Comparable things as driver, I did all Comparator as the navigator
+
+What are the advantages and disadvantages of serving in each role?
+Advantages of Serving as the Driver
+Hands-On Coding: The driver is actively writing the code, which offers direct experience with the syntax and logic of the programming language being used.
+Focused Task Execution: Being the driver allows for deep focus on the immediate task of writing code, fixing syntax errors, and implementing small-scale logic.
+Immediate Feedback: The driver receives instant feedback on the code from the navigator, which can help in learning and improvement.
+Skill Development: This role can enhance a developer's ability to write code efficiently and accurately under observation and guidance.
+
+Disadvantages of Serving as the Driver
+Less Strategic Thinking: The driver may become too focused on the details of coding and miss out on bigger picture thinking or strategy.
+Increased Pressure: Having someone observe and critique every line of code as it's written can be stressful for some individuals.
+Reduced Awareness: Being deeply involved in coding can sometimes reduce awareness of broader issues or alternative approaches to a problem.
+
+Advantages of Serving as the Navigator
+Strategic Oversight: The navigator focuses on the overall strategy of the coding task, including algorithm logic, design patterns, and code structure.
+Opportunity for Mentoring: This role is well-suited for mentoring, as it allows the navigator to guide the driver through the code, offering insights and teaching best practices.
+Broader Focus: The navigator can keep an eye on long-term goals and potential pitfalls, ensuring that the code aligns with project objectives.
+Quality Control: The navigator can spot mistakes or suggest improvements, ensuring higher code quality and fewer bugs.
+
+Disadvantages of Serving as the Navigator
+Less Hands-On Coding: The navigator is not directly involved in writing the code, which can lead to less practical coding experience during the session.
+Potential for Disengagement: If not actively involved, the navigator might lose focus or become disengaged from the task at hand.
+Communication Challenges: Effective navigation requires clear and concise communication, which can be challenging and may lead to misunderstandings if not done well.
+Dependency Development: Over-reliance on the navigator for decision-making can hinder the driver's ability to think independently and solve problems.
+
+How often did you and your partner switch roles? Did you switch often enough?
+We switch every 30 minutes, I believe it is enough
+
+Which is your preferred role and why?
+I preferred navigator, cause i just need to do brain storm
+
+Explain why this is a BAD test case for your method: assertEquals("bird", MedianSolver.median(new String[]{"bird", "cat", "dog", "ant"}))
+Ambiguity in Sorting Order: The test assumes a specific sorting order without explicitly defining it. The array {"bird", "cat", "dog", "ant"} is not sorted, and the median value depends on the order of elements after sorting. The median for an unsorted array is undefined unless the sorting criteria are specified.
+Mismatch with Default Sorting Behavior: If we assume the method uses natural ordering (lexicographic sorting for strings), the sorted array would be {"ant", "bird", "cat", "dog"}, and the median for an array of even length (4 elements) would be either "bird" or "cat". However, the method implementation as described returns the element at length / 2, which would be "cat" in this case, not "bird".
+Lack of Comparator: The original method specification does not indicate how the elements should be sorted. Without a comparator or assuming natural ordering for Comparable elements, it's unclear how the method should determine the median.
+
+
+Explain how you could change the test to make it "valid" and explain how you could change the specification so that this is considered a "good" test
+First, we can adjust the test to match the method's specifications. Assuming the method sorts using natural ordering, change the test to match the expected outcome. Second, change the method specification. We can Custom Sorting Orders and Use a Comparator. In summary, the test case is problematic because it makes implicit assumptions about sorting order and doesn't align with the method's default behavior. Adjusting the test case or the method specification can resolve these issues.
