@@ -5,20 +5,22 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Create a JUnit test class to test various methods of the GrayscaleImage class.
 class GrayscaleImageTest {
 
-    private GrayscaleImage smallSquare;
-    private GrayscaleImage smallWide;
+    // Declare private member variables to store test instances of images.
+    private GrayscaleImage smallSquare; // Used for testing non-wide image operations.
+    private GrayscaleImage smallWide;   // Used for testing operations that may behave differently on non-square images.
 
     /**
      * Set up common test images used in the test cases.
      * This method is run before each test to ensure that each test has a fresh set of images.
      */
     @BeforeEach
-     void setUp() {
-        // 'smallSquare' is a 2x2 image suitable for testing non-wide operations.
+    void setUp() {
+        // Create a 2x2 image 'smallSquare' suitable for testing non-wide operations.
         smallSquare = new GrayscaleImage(new double[][]{{1,2},{3,4}});
-        // 'smallWide' is a 2x3 image suitable for testing operations that may behave differently on non-square images.
+        // Create a 2x3 image 'smallWide' suitable for testing operations that may behave differently on non-square images.
         smallWide = new GrayscaleImage(new double[][]{{1,2,3},{4,5,6}});
     }
 
@@ -28,7 +30,7 @@ class GrayscaleImageTest {
      */
     @Test
     void testGetPixelBoundaryConditions() {
-        // Grouping boundary tests using assertAll to ensure all conditions are checked even if one fails.
+        // Group boundary tests using assertAll to ensure all conditions are checked even if one fails.
         assertAll("Boundary Conditions",
                 () -> assertEquals(1, smallSquare.getPixel(0, 0), "Top-left pixel"),
                 () -> assertEquals(2, smallSquare.getPixel(1, 0), "Top-right pixel"),
@@ -43,7 +45,7 @@ class GrayscaleImageTest {
      */
     @Test
     void testGetPixelOutOfBounds() {
-        // Testing exception throwing for out-of-bounds coordinates.
+        // Test exception throwing for out-of-bounds coordinates.
         assertThrows(IllegalArgumentException.class, () -> smallSquare.getPixel(2, 0), "X coordinate out of bounds");
         assertThrows(IllegalArgumentException.class, () -> smallSquare.getPixel(0, 2), "Y coordinate out of bounds");
     }
@@ -54,7 +56,7 @@ class GrayscaleImageTest {
      */
     @Test
     void testEqualsWithDifferentObjects() {
-        // Comparing GrayscaleImage object to an instance of a different class should return false.
+        // Comparing a GrayscaleImage object to an instance of a different class should return false.
         assertNotEquals(smallSquare, new Object(), "GrayscaleImage should not be equal to a different type of object");
     }
 
@@ -228,6 +230,10 @@ class GrayscaleImageTest {
     }
 
     /**
+     * Tests the 'squarified' method on a wide image
+
+
+     /**
      * Tests the 'squarified' method on a wide image to confirm it results in a square image.
      * The test checks that the process correctly crops the rightmost columns if necessary.
      */
